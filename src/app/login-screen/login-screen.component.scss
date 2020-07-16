@@ -1,0 +1,55 @@
+:host {
+
+  text-align: center;
+
+  .login-container {
+    border: 1px solid white;
+    display: inline-block !important;
+    margin: calc(50vh - 185px) auto 0;
+    padding: 0 25px 25px 25px;
+    max-width: 80%;
+    box-sizing: border-box;
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0 0 20px 0;
+    font-weight: normal;
+  }
+
+  #user-pass {
+    * {
+      display: block;
+    }
+
+    input {
+      margin: 0 auto 25px;
+      width: 310px;
+      max-width: 80%;
+      border: none;
+      border-bottom: 1px solid white;
+      outline: none;
+      background-color: transparent;
+      color: white;
+      padding: 5px 0;
+      font-size: 16px;
+      font-family: 'Montserrat', sans-serif;
+    }
+  }
+
+  .fa-button {
+    border: 1px solid white;
+    padding: 10px;
+    display: inline-block !important;
+    cursor: pointer;
+
+    i {
+      font-size: 24px;
+    }
+  }
+}
