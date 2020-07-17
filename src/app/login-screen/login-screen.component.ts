@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth} from "@angular/fire/auth";
 import * as firebase from 'firebase/app';
+import {AuthAPIService} from "../services/auth-api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-screen',
@@ -12,13 +14,18 @@ export class LoginScreenComponent implements OnInit {
   emailEntered: string = "";
   passwordEntered: string = "";
 
-  constructor(private fireAuth: AngularFireAuth) {
-    fireAuth.user.subscribe((result) => {
+  constructor(private authApi: AuthAPIService,
+              private fireAuth: AngularFireAuth,
+              private router: Router) {
+    this.fireAuth.user.subscribe((result) => {
       if (result == null) {
         console.log('No user signed in.');
       } else {
         console.log('User signed in.')
         console.log(result);
+
+        this.authApi.user = result;
+        this.router.navigate(['/home']);
       }
     })
   }
@@ -26,42 +33,18 @@ export class LoginScreenComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public attemptSignUp() {
-    console.log(this.emailEntered);
-    console.log(this.passwordEntered);
-
-    this.doRegister(this.emailEntered, this.passwordEntered).then(res => {
+  public login() {
+    firebase.auth().signInWithEmailAndPassword(this.emailEntered, this.passwordEntered).then(res => {
       console.log(res);
-      console.log("Your account has been created");
+      this.authApi.user = res['user'];
+
+      this.router.navigate(['/home']);
     }, err => {
-      console.log(err);
       alert(err.message);
     })
   }
 
-  doRegister(email, password){
-    return new Promise<any>((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(res => {
-          resolve(res);
-        }, err => reject(err))
-    })
+  public logout() {
+    this.authApi.logout();
   }
-
-  public attemptLogin() {
-    firebase.auth().signInWithEmailAndPassword(this.emailEntered, this.passwordEntered).then(res => {
-      console.log(res);
-    }, err => {
-      console.log(err);
-    })
-  }
-
-  logout() {
-    firebase.auth().signOut().then(res => {
-      console.log(res);
-    }, err => {
-      console.log(err);
-    })
-  }
-
 }

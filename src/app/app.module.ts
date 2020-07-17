@@ -9,12 +9,16 @@ import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import {AngularFireAnalyticsModule} from "@angular/fire/analytics";
 import {AngularFirestoreModule} from "@angular/fire/firestore";
-import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
+import {AngularFireAuthModule} from "@angular/fire/auth";
+import {AuthAPIService} from "./services/auth-api.service";
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import {AuthGuard} from "./guards/auth.guard";
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginScreenComponent
+    LoginScreenComponent,
+    NavBarComponent
   ],
     imports: [
         BrowserModule,
@@ -25,7 +29,7 @@ import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
         AngularFirestoreModule,
         AngularFireAuthModule
     ],
-  providers: [],
+  providers: [AuthAPIService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
