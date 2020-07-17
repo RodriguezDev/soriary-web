@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "soriary-88038": {
+      "hosting": {
+        "soriary-app": [
+          "soriary-88038"
+        ]
+      }
+    }
+  }
+}
