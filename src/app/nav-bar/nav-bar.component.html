@@ -1,1 +1,12 @@
-<p>nav-bar works!</p>
+<div id="logo">
+  <div>
+    <img src="assets/img/mouse.png">
+  </div>
+  <h1>S O R I A R Y</h1>
+</div>
+
+<div id="actions">
+  <h3 [ngClass]="{'selected' : selectedTab == tabOption.Read}" (click)="changeTab(tabOption.Read)">READ</h3>
+  <h3 [ngClass]="{'selected' : selectedTab == tabOption.Write}" (click)="changeTab(tabOption.Write)">WRITE</h3>
+  <h3 [ngClass]="{'selected' : selectedTab == tabOption.Settings}" (click)="changeTab(tabOption.Settings)">SETTINGS</h3>
+</div>

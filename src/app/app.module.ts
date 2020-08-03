@@ -13,12 +13,16 @@ import {AngularFireAuthModule} from "@angular/fire/auth";
 import {AuthAPIService} from "./services/auth-api.service";
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {AuthGuard} from "./guards/auth.guard";
+import { HomeScreenComponent } from './home-screen/home-screen.component';
+import { WriteComponent } from './write/write.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginScreenComponent,
-    NavBarComponent
+    NavBarComponent,
+    HomeScreenComponent,
+    WriteComponent
   ],
     imports: [
         BrowserModule,

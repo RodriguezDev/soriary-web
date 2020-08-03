@@ -1,0 +1,16 @@
+:host {
+
+  app-nav-bar, #content-section {
+    vertical-align: top;
+    display: inline-block;
+    height: 98vh;
+  }
+
+  app-nav-bar {
+    width: 150px;
+  }
+
+  #content-section {
+    width: calc(100% - 150px);
+  }
+}
